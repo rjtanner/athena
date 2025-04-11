@@ -88,7 +88,7 @@ Mesh::Mesh(ParameterInput *pin, int mesh_test) :
              GetBoundaryFlag(pin->GetOrAddString("mesh", "ox3_bc", "none"))},
     f2(mesh_size.nx2 > 1 ? true : false), f3(mesh_size.nx3 > 1 ? true : false),
     ndim(f3 ? 3 : (f2 ? 2 : 1)),
-    adaptive(pin->GetOrAddString("mesh", "refinement", "none") == "adaptive"
+    adaptive(pin->GetOrAddString("mesh", "refinement", "none").compare("adaptive")
              ? true : false),
     multilevel((adaptive || pin->GetOrAddString("mesh", "refinement", "none") == "static")
                ? true : false),
